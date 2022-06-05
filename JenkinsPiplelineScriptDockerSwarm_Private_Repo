@@ -11,5 +11,8 @@ node{
       def mavenCMD = "${mavenHome}/bin/mvn"
       sh "${mavenCMD} clean package"
     } 
+        stage("Build Dokcer Image") {
+         sh "docker build -t 13.127.76.79:8083/java-web-app:${buildNumber} ."
+    }
 
 }
