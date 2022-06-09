@@ -12,15 +12,15 @@ node{
       sh "${mavenCMD} clean package"
     } 
         stage("Build Dokcer Image") {
-         sh "docker build -t 13.233.236.168:8080/java-web-app:${buildNumber} ."
+         sh "docker build -t 13.234.226.205:8080/java-web-app:${buildNumber} ."
     }
     stage("Docker Push"){
 
 	withCredentials([string(credentialsId: 'DockerHubPwd', variable: 'DockerHubPwd')]) {
-          sh "docker login -u prasathps -p ${DockerHubPwd}  13.233.236.168:8080"   
+          sh "docker login -u prasathps -p ${DockerHubPwd}  13.234.226.205:8080"   
        }
        
-        sh "docker push 13.233.236.168:8080/java-web-app:${buildNumber}"
+        sh "docker push 13.234.226.205:8080/java-web-app:${buildNumber}"
     }
 
 }
