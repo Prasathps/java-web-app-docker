@@ -17,7 +17,7 @@ node{
     
            stage("Docker Push test")
 	{
-        docker.withRegistry('http://13.232.50.15:5100', 'docker') {
+        docker.withRegistry('https://registry.hub.docker.com', 'docker') {
 	withCredentials([usernamePassword(credentialsId: 'dockerid', passwordVariable: 'pass', usernameVariable: 'user')]) {
           sh "docker login -u user -p ${pass}  13.232.50.15:8080"   
        }
