@@ -20,7 +20,10 @@ node{
         docker.withRegistry('https://registry.example.com', 'docker') {
 
         customImage.push()
-	sh "docker push 13.232.50.15:8080/java-web-app:${buildNumber}"
+	withCredentials([usernamePassword(credentialsId: 'dockerid', passwordVariable: 'pass', usernameVariable: 'user')]) {
+          sh "docker login -u user -p ${pass}  13.232.50.15:8080"   
+       }
+       
     }
     }
     
