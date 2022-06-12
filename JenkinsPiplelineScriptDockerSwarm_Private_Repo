@@ -17,7 +17,7 @@ node{
     
         stage("Docker Push test")
 	{
-        docker.withRegistry('https://registry.example.com', 'DockerHubPwd') {
+        docker.withRegistry('https://registry.example.com', 'docker') {
 
         customImage.push()
     }
