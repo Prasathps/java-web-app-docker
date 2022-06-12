@@ -21,6 +21,7 @@ node{
 
         customImage.push()
     }
+    }
     
     stage("Docker Push"){
 
