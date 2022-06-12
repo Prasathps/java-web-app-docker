@@ -15,7 +15,7 @@ node{
          sh "docker build -t 13.232.50.15:8080/java-web-app:${buildNumber} ."
     }
     
-        stage("Docker Push")
+        stage("Docker Push test")
 	{
         docker.withRegistry('https://registry.example.com', 'DockerHubPwd') {
 
