@@ -17,13 +17,11 @@ node{
     
            stage("Docker Push test")
 	{
-        docker.withRegistry('https://registry.example.com', 'docker') {
-
-        customImage.push()
+        docker.withRegistry('http://13.232.50.15:5100', 'docker') {
 	withCredentials([usernamePassword(credentialsId: 'dockerid', passwordVariable: 'pass', usernameVariable: 'user')]) {
           sh "docker login -u user -p ${pass}  13.232.50.15:8080"   
        }
-       
+        customImage.push()
     }
     }
     
