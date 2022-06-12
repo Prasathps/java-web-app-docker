@@ -15,8 +15,6 @@ node{
          sh "docker build -t 13.232.50.15:8080/java-web-app:${buildNumber} ."
     }
     
-}
-    
     stage("Docker Push"){
 
 	withCredentials([string(credentialsId: 'docker', variable: 'docker')]) {
