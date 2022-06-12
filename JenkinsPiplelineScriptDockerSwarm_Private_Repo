@@ -15,18 +15,12 @@ node{
          sh "docker build -t 13.232.50.15:8080/java-web-app:${buildNumber} ."
     }
     
-        stage("Docker Push test")
-	{
-        docker.withRegistry('https://registry.example.com', 'docker') {
-
-        customImage.push()
-    }
-    }
+}
     
     stage("Docker Push"){
 
-	withCredentials([string(credentialsId: 'DockerHubPwd', variable: 'DockerHubPwd')]) {
-          sh "docker login -u prasathps -p ${DockerHubPwd}  13.232.50.15:8080"   
+	withCredentials([string(credentialsId: 'docker', variable: 'docker')]) {
+          sh "docker login -u prasathps -p ${docker}  13.232.50.15:8080"   
        }
        
         sh "docker push 13.232.50.15:8080/java-web-app:${buildNumber}"
