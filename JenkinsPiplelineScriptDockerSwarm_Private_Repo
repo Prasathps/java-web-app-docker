@@ -18,8 +18,8 @@ node{
 
     stage("Docker Push"){
 
-	withCredentials([string(credentialsId: 'Dockerhubpwd', variable: 'Dockerhubpwd')]) {
-          sh "docker login -u prasathps -p ${Dockerhubpwd}  18.218.235.117:8080"   
+	withCredentials([usernamePassword(credentialsId: 'dockerfinalprasathpassword', passwordVariable: 'pass', usernameVariable: 'user')]){
+          sh "docker login -u user -p ${pass}  18.218.235.117:8080"   
        }
        
         sh "docker push 18.218.235.117:8080/java-web-app:${buildNumber}"
