@@ -25,4 +25,13 @@ node{
         
         sh "docker push prasathps/java-web-app-docker:${buildNumber}"
     }
+
+    stage("Deploy Application As Docker Container In Docker Deployment Server"){
+        sshagent(['Docker_Dev_Server_SSH']) {
+            sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.14.64 docker rm -f javawebappcontainer || true"
+            sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.14.64 docker run -d -p 8080:8080 --name javawebcontainer prasathps/java-web-app-docker:${buildNumber}"
+            
+    }
+}
+
 }
