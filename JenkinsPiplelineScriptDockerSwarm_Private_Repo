@@ -1,7 +1,7 @@
 node{
     
    def buildNumber = BUILD_NUMBER
-   {
+   
     stage("Git CheckOut"){
         git url: 'https://github.com/Prasathps/java-web-app-docker.git',branch: 'master'
     }
@@ -12,11 +12,16 @@ node{
     }
   
   
+  
   stage("Build Dokcer Image") {
          sh "docker build -t prasathps/java-web-app-docker:${buildNumber} ."
     }
-  }
-   
-   
-    
-    
+}
+    stage("Docker login and Push"){
+        withCredentials([string(credentialsId: 'dockerpassword', variable: 'dockerpassword')]) {
+            sh "docker login -u prasathps -p ${dockerpassword} "
+            
+        }
+        
+        sh "docker push prasathps/java-web-app-docker:${buildNumber}"
+    }
