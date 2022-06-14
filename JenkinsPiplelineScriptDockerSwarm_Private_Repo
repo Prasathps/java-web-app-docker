@@ -18,8 +18,8 @@ node{
     }
 }
     stage("Docker login and Push"){
-        withCredentials([string(credentialsId: 'dockerpassword', variable: 'dockerpassword')]) {
-            sh "docker login -u prasathps -p ${dockerpassword} "
+        withCredentials([string(credentialsId: 'docker_hub_password', variable: 'docker_hub_password')]) {
+            sh "docker login -u prasathps -p ${docker_hub_password} "
             
         }
         
