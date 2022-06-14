@@ -7,13 +7,10 @@ node{
     }
     
     stage(" Maven Clean Package"){
-      def mavenHome =  tool name: "local_maven", type: "maven"
-      def mavenCMD = "${mavenHome}/bin/mvn"
-      sh "${mavenCMD} clean package"
-    } 
-        stage("Build Dokcer Image") {
-         sh "docker build -t 18.218.235.117:8080/java-web-app:${buildNumber} ."
+      def mavenHome =  tool name: "maven", type: "maven"
+      sh "${mavenHome}/bin/mvn clean package"
     }
-    
-    }
+  }
+  
+
   
