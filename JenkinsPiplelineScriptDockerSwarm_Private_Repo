@@ -16,5 +16,4 @@ node{
          sh "docker build -t prasathps/java-web-app-docker:${buildNumber}"
     }
     
-  }
     
