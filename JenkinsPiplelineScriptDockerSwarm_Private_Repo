@@ -16,7 +16,7 @@ node{
   stage("Build Dokcer Image") {
          sh "docker build -t prasathps/java-web-app-docker:${buildNumber} ."
     }
-}
+
     stage("Docker login and Push"){
         withCredentials([string(credentialsId: 'docker_hub_password', variable: 'docker_hub_password')]) {
             sh "docker login -u prasathps -p ${docker_hub_password} "
@@ -25,3 +25,4 @@ node{
         
         sh "docker push prasathps/java-web-app-docker:${buildNumber}"
     }
+}
