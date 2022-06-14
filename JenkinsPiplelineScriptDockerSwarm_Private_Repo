@@ -12,5 +12,9 @@ node{
     }
   }
   
-
-  
+  stage("Build Dokcer Image") {
+         sh "docker build -t prasathps/java-web-app-docker:${buildNumber}"
+    }
+    
+  }
+    
