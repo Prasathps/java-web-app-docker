@@ -10,7 +10,7 @@ node{
       def mavenHome =  tool name: "Maven", type: "maven"
       sh "${mavenHome}/bin/mvn clean package"
     }
-  }
+  
   
   stage("Build Dokcer Image") {
          sh "docker build -t prasathps/java-web-app-docker:${buildNumber} ."
