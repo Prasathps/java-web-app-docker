@@ -15,5 +15,5 @@ node{
          sh "docker build -t 18.218.235.117:8080/java-web-app:${buildNumber} ."
     }
     
-
+    }
   
