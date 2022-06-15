@@ -29,7 +29,7 @@ node{
     stage("Deploy Application As Docker Container In Docker Deployment Server"){
         sshagent(['Docker_dev_server']) {
             sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.14.64 docker rm -f cloudcandy || true"
-            sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.14.64 docker run -d -p 8080:8080 --name cloudecandy prasathps/java-web-app-docker:${buildNumber}"
+            sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.14.64 docker run -d -p 8083:8083 --name cloudecandy prasathps/java-web-app-docker:${buildNumber}"
             
     }
 }
